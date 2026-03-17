@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEXEM – Refer a Friend</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f0f2f5;
+      color: #1a1a2e;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #002366 0%, #0050c8 100%);
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    .header img.logo {
+      max-height: 44px;
+      width: auto;
+    }
+
+    .header-wordmark {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: 1px;
+    }
+
+    .header-wordmark span {
+      color: #f5a623;
+    }
+
+    /* ── Card wrapper ── */
+    .card {
+      max-width: 640px;
+      margin: 36px auto;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0, 35, 102, 0.10);
+      overflow: hidden;
+    }
+
+    /* ── Hero banner ── */
+    .hero {
+      background: linear-gradient(135deg, #002366 0%, #0050c8 100%);
+      padding: 36px 32px 28px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #f5a623;
+      color: #002366;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 span {
+      color: #f5a623;
+    }
+
+    .hero p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── Body padding ── */
+    .body {
+      padding: 32px 32px 24px;
+    }
+
+    .greeting {
+      font-size: 16px;
+      color: #1a1a2e;
+      margin-bottom: 16px;
+    }
+
+    .greeting strong {
+      color: #002366;
+    }
+
+    .intro {
+      font-size: 15px;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* ── Section title ── */
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: #002366;
+      margin-bottom: 18px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #f5a623;
+    }
+
+    /* ── Steps grid ── */
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 500px) {
+      .steps {
+        grid-template-columns: 1fr;
+      }
+      .body {
+        padding: 24px 20px 20px;
+      }
+      .hero {
+        padding: 28px 20px 22px;
+      }
+    }
+
+    .step-card {
+      background: #f8f9fc;
+      border: 1px solid #e4e8f0;
+      border-radius: 10px;
+      padding: 18px 16px;
+      position: relative;
+    }
+
+    .step-card.accent {
+      background: #fff8ec;
+      border-color: #f5d68a;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      background: #002366;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+
+    .step-card.accent .step-number {
+      background: #f5a623;
+      color: #002366;
+    }
+
+    .step-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #002366;
+      margin-bottom: 6px;
+    }
+
+    .step-desc {
+      font-size: 13px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    .step-link {
+      display: inline-block;
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #0050c8;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .step-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Reward pills ── */
+    .reward-pill {
+      display: inline-block;
+      background: #002366;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+    }
+
+    .reward-pill.gold {
+      background: #f5a623;
+      color: #002366;
+    }
+
+    /* ── Sign-off ── */
+    .signoff {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.7;
+      margin-bottom: 28px;
+      border-top: 1px solid #eee;
+      padding-top: 20px;
+    }
+
+    /* ── Buttons ── */
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      flex: 1;
+      min-width: 140px;
+      display: inline-block;
+      padding: 13px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    .btn:hover {
+      opacity: 0.88;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #002366 0%, #0050c8 100%);
+      color: #ffffff;
+    }
+
+    .btn-secondary {
+      background: #f5a623;
+      color: #002366;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: #1a1a2e;
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ── Language blocks: hidden by default, shown by JS ── */
+    .lang-block {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!--
+    ══════════════════════════════════════════════════════════════
+    SERVER-INJECTED VARIABLES
+    The server replaces these placeholders before delivery:
+      ${preferred_language}   → e.g. EN, IT, NL, FR, ES
+      ${Accounts.Account Name} → client's full name
+      ${Client_Portal_Url}    → personal referral link
+      ${Friends_status_update} → referral tracking link
+    ══════════════════════════════════════════════════════════════
+  -->
+  <script>
+    var LANG = "${preferred_language}";
+  </script>
+
+  <div class="header">
+    <div class="header-wordmark">MEX<span>EM</span></div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       ENGLISH (EN)
+  ═══════════════════════════════════════ -->
+  <div class="lang-block" id="lang-EN">
+    <div class="card">
+      <div class="hero">
+        <div class="hero-badge">Refer a Friend</div>
+        <h1>Invite Friends &amp;<br><span>Earn up to €150</span></h1>
+        <p>Share MEXEM and get rewarded — it's that simple.</p>
+      </div>
+      <div class="body">
+        <p class="greeting">Dear <strong>${Accounts.Account Name}</strong>,</p>
+        <p class="intro">
+          As a MEXEM client, you can always benefit from our <strong>Refer a Friend</strong> programme.
+          It is a great opportunity to share the advantages of MEXEM with friends and family and get rewarded for it.
+        </p>
+
+        <div class="section-title">How the Enhanced Programme Works</div>
+
+        <div class="steps">
+          <div class="step-card accent">
+            <div class="step-number">1</div>
+            <div class="step-title">Invite Your Friends</div>
+            <div class="step-desc">
+              Share your personal link via WhatsApp, Telegram, or copy and send it directly.
+            </div>
+            <a class="step-link" href="${Client_Portal_Url}">${Client_Portal_Url}</a>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Earn More</div>
+            <div class="step-desc">
+              For every friend who registers through your invitation, you will receive
+              <span class="reward-pill">up to €150</span> directly into your trading account.
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Your Friends Win Too</div>
+            <div class="step-desc">
+              Every referred friend receives <span class="reward-pill gold">up to €50</span> to start their MEXEM experience.
+            </div>
+          </div>
+
+          <div class="step-card accent">
+            <div class="step-number">4</div>
+            <div class="step-title">Track Your Success</div>
+            <div class="step-desc">
+              Check the status of your referrals at any time.
+            </div>
+            <a class="step-link" href="${Friends_status_update}">${Friends_status_update}</a>
+          </div>
+        </div>
+
+        <div class="signoff">
+          Happy investing,<br>
+          <strong>The MEXEM Team</strong>
+        </div>
+
+        <div class="btn-group">
+          <a class="btn btn-primary" href="${Client_Portal_Url}">Share Your Link</a>
+          <a class="btn btn-secondary" href="${Friends_status_update}">Track Referrals</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       ITALIAN (IT)
+  ═══════════════════════════════════════ -->
+  <div class="lang-block" id="lang-IT">
+    <div class="card">
+      <div class="hero">
+        <div class="hero-badge">Invita un Amico</div>
+        <h1>Invita Amici &amp;<br><span>Guadagna fino a €150</span></h1>
+        <p>Condividi MEXEM e ricevi premi — è semplicissimo.</p>
+      </div>
+      <div class="body">
+        <p class="greeting">Gentile <strong>${Accounts.Account Name}</strong>,</p>
+        <p class="intro">
+          Come cliente MEXEM, puoi sempre beneficiare del nostro programma <strong>Invita un Amico</strong>.
+          È una grande opportunità per condividere i vantaggi di MEXEM con amici e familiari e ricevere ricompense per farlo.
+        </p>
+
+        <div class="section-title">Come Funziona il Programma</div>
+
+        <div class="steps">
+          <div class="step-card accent">
+            <div class="step-number">1</div>
+            <div class="step-title">Invita i Tuoi Amici</div>
+            <div class="step-desc">
+              Condividi il tuo link personale tramite WhatsApp, Telegram, oppure copia e invia il link direttamente.
+            </div>
+            <a class="step-link" href="${Client_Portal_Url}">${Client_Portal_Url}</a>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Guadagna di Più</div>
+            <div class="step-desc">
+              Per ogni amico che si registra tramite il tuo invito, riceverai
+              <span class="reward-pill">fino a €150</span> direttamente nel tuo conto di trading.
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Anche i Tuoi Amici Vincono</div>
+            <div class="step-desc">
+              Ogni amico invitato riceve <span class="reward-pill gold">fino a €50</span> per iniziare la propria esperienza MEXEM.
+            </div>
+          </div>
+
+          <div class="step-card accent">
+            <div class="step-number">4</div>
+            <div class="step-title">Monitora il Tuo Successo</div>
+            <div class="step-desc">
+              Controlla lo stato dei tuoi referral in qualsiasi momento.
+            </div>
+            <a class="step-link" href="${Friends_status_update}">${Friends_status_update}</a>
+          </div>
+        </div>
+
+        <div class="signoff">
+          Buon investimento,<br>
+          <strong>Il Team MEXEM</strong>
+        </div>
+
+        <div class="btn-group">
+          <a class="btn btn-primary" href="${Client_Portal_Url}">Condividi il Tuo Link</a>
+          <a class="btn btn-secondary" href="${Friends_status_update}">Monitora i Referral</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       DUTCH (NL)
+  ═══════════════════════════════════════ -->
+  <div class="lang-block" id="lang-NL">
+    <div class="card">
+      <div class="hero">
+        <div class="hero-badge">Verwijs een Vriend</div>
+        <h1>Nodig Vrienden Uit &amp;<br><span>Verdien tot €150</span></h1>
+        <p>Deel MEXEM en word beloond — zo eenvoudig is het.</p>
+      </div>
+      <div class="body">
+        <p class="greeting">Beste <strong>${Accounts.Account Name}</strong>,</p>
+        <p class="intro">
+          Als MEXEM-klant kunt u altijd profiteren van ons <strong>Verwijs een Vriend</strong>-programma.
+          Het is een uitstekende kans om de voordelen van MEXEM te delen met vrienden en familie en daarvoor beloond te worden.
+        </p>
+
+        <div class="section-title">Hoe het Programma Werkt</div>
+
+        <div class="steps">
+          <div class="step-card accent">
+            <div class="step-number">1</div>
+            <div class="step-title">Nodig Uw Vrienden Uit</div>
+            <div class="step-desc">
+              Deel uw persoonlijke link via WhatsApp, Telegram, of kopieer de link en stuur deze direct.
+            </div>
+            <a class="step-link" href="${Client_Portal_Url}">${Client_Portal_Url}</a>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Verdien Meer</div>
+            <div class="step-desc">
+              Voor elke vriend die zich registreert via uw uitnodiging, ontvangt u
+              <span class="reward-pill">tot €150</span> rechtstreeks op uw handelsrekening.
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Uw Vrienden Profiteren Ook</div>
+            <div class="step-desc">
+              Elke doorverwezen vriend ontvangt <span class="reward-pill gold">tot €50</span> om hun MEXEM-ervaring te beginnen.
+            </div>
+          </div>
+
+          <div class="step-card accent">
+            <div class="step-number">4</div>
+            <div class="step-title">Volg Uw Succes</div>
+            <div class="step-desc">
+              Controleer op elk moment de status van uw verwijzingen.
+            </div>
+            <a class="step-link" href="${Friends_status_update}">${Friends_status_update}</a>
+          </div>
+        </div>
+
+        <div class="signoff">
+          Prettig beleggen,<br>
+          <strong>Het MEXEM-team</strong>
+        </div>
+
+        <div class="btn-group">
+          <a class="btn btn-primary" href="${Client_Portal_Url}">Deel Uw Link</a>
+          <a class="btn btn-secondary" href="${Friends_status_update}">Volg Verwijzingen</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       FRENCH (FR)
+  ═══════════════════════════════════════ -->
+  <div class="lang-block" id="lang-FR">
+    <div class="card">
+      <div class="hero">
+        <div class="hero-badge">Parrainez un Ami</div>
+        <h1>Invitez des Amis &amp;<br><span>Gagnez jusqu'à 150 €</span></h1>
+        <p>Partagez MEXEM et soyez récompensé — c'est aussi simple que ça.</p>
+      </div>
+      <div class="body">
+        <p class="greeting">Cher(e) <strong>${Accounts.Account Name}</strong>,</p>
+        <p class="intro">
+          En tant que client MEXEM, vous pouvez toujours bénéficier de notre programme <strong>Parrainez un Ami</strong>.
+          C'est une excellente opportunité de partager les avantages de MEXEM avec vos amis et votre famille et d'en être récompensé(e).
+        </p>
+
+        <div class="section-title">Comment Fonctionne le Programme</div>
+
+        <div class="steps">
+          <div class="step-card accent">
+            <div class="step-number">1</div>
+            <div class="step-title">Invitez Vos Amis</div>
+            <div class="step-desc">
+              Partagez votre lien personnel via WhatsApp, Telegram, ou copiez le lien et envoyez-le directement.
+            </div>
+            <a class="step-link" href="${Client_Portal_Url}">${Client_Portal_Url}</a>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Gagnez Plus</div>
+            <div class="step-desc">
+              Pour chaque ami qui s'inscrit via votre invitation, vous recevrez
+              <span class="reward-pill">jusqu'à 150 €</span> directement sur votre compte de trading.
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Vos Amis Gagnent Aussi</div>
+            <div class="step-desc">
+              Chaque ami parrainé reçoit <span class="reward-pill gold">jusqu'à 50 €</span> pour commencer son expérience MEXEM.
+            </div>
+          </div>
+
+          <div class="step-card accent">
+            <div class="step-number">4</div>
+            <div class="step-title">Suivez Vos Résultats</div>
+            <div class="step-desc">
+              Vérifiez à tout moment le statut de vos parrainages.
+            </div>
+            <a class="step-link" href="${Friends_status_update}">${Friends_status_update}</a>
+          </div>
+        </div>
+
+        <div class="signoff">
+          Bon investissement,<br>
+          <strong>L'Équipe MEXEM</strong>
+        </div>
+
+        <div class="btn-group">
+          <a class="btn btn-primary" href="${Client_Portal_Url}">Partager Mon Lien</a>
+          <a class="btn btn-secondary" href="${Friends_status_update}">Suivre les Parrainages</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SPANISH (ES)
+  ═══════════════════════════════════════ -->
+  <div class="lang-block" id="lang-ES">
+    <div class="card">
+      <div class="hero">
+        <div class="hero-badge">Recomienda a un Amigo</div>
+        <h1>Invita a Amigos &amp;<br><span>Gana hasta 150 €</span></h1>
+        <p>Comparte MEXEM y recibe recompensas — así de fácil.</p>
+      </div>
+      <div class="body">
+        <p class="greeting">Estimado/a <strong>${Accounts.Account Name}</strong>,</p>
+        <p class="intro">
+          Como cliente de MEXEM, siempre puede beneficiarse de nuestro programa <strong>Recomienda a un Amigo</strong>.
+          Es una gran oportunidad para compartir las ventajas de MEXEM con amigos y familiares y ser recompensado/a por ello.
+        </p>
+
+        <div class="section-title">Cómo Funciona el Programa</div>
+
+        <div class="steps">
+          <div class="step-card accent">
+            <div class="step-number">1</div>
+            <div class="step-title">Invita a Tus Amigos</div>
+            <div class="step-desc">
+              Comparte tu enlace personal por WhatsApp, Telegram, o cópialo y envíalo directamente.
+            </div>
+            <a class="step-link" href="${Client_Portal_Url}">${Client_Portal_Url}</a>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <div class="step-title">Gana Más</div>
+            <div class="step-desc">
+              Por cada amigo que se registre a través de tu invitación, recibirás
+              <span class="reward-pill">hasta 150 €</span> directamente en tu cuenta de trading.
+            </div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <div class="step-title">Tus Amigos También Ganan</div>
+            <div class="step-desc">
+              Cada amigo referido recibe <span class="reward-pill gold">hasta 50 €</span> para comenzar su experiencia MEXEM.
+            </div>
+          </div>
+
+          <div class="step-card accent">
+            <div class="step-number">4</div>
+            <div class="step-title">Sigue Tu Progreso</div>
+            <div class="step-desc">
+              Consulta el estado de tus referencias en cualquier momento.
+            </div>
+            <a class="step-link" href="${Friends_status_update}">${Friends_status_update}</a>
+          </div>
+        </div>
+
+        <div class="signoff">
+          Feliz inversión,<br>
+          <strong>El Equipo MEXEM</strong>
+        </div>
+
+        <div class="btn-group">
+          <a class="btn btn-primary" href="${Client_Portal_Url}">Compartir Mi Enlace</a>
+          <a class="btn btn-secondary" href="${Friends_status_update}">Seguir Referencias</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; 2026 MEXEM. All rights reserved.
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       Language switcher
+       Shows the block matching LANG, falls back to EN.
+  ═══════════════════════════════════════ -->
+  <script>
+    (function () {
+      var supported = ['EN', 'IT', 'NL', 'FR', 'ES'];
+      var lang = (LANG && supported.indexOf(LANG.toUpperCase()) !== -1)
+        ? LANG.toUpperCase()
+        : 'EN';
+
+      var target = document.getElementById('lang-' + lang);
+      if (target) {
+        target.style.display = 'block';
+      } else {
+        document.getElementById('lang-EN').style.display = 'block';
+      }
+    })();
+  </script>
+
+</body>
+</html>
