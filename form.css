@@ -1,0 +1,483 @@
+#bring-friend-form {
+    .inputs-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    label {
+        text-align: justify;
+        color: #FFF;
+        font-family: Poppins;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 15.8px;
+        /* 131.667% */
+        letter-spacing: -0.105px;
+        cursor: pointer;
+
+        a {
+            text-decoration: underline;
+            cursor: pointer;
+            color: #FFF;
+        }
+    }
+
+    .container {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 500px;
+        padding: 20px;
+    }
+
+    .form-group {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    input[type="email"],
+    input[type="text"] {
+        width: 80%;
+        height: 35px;
+        padding: 15px;
+        border-radius: 8px;
+        border: none;
+        box-sizing: border-box;
+        font-size: 12px;
+        font-weight: 400;
+        color: black;
+    }
+
+    .checkbox-container {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+        font-size: 8px;
+        line-height: 1.4;
+    }
+
+    input[type="checkbox"] {
+        margin-top: 5px;
+        margin-right: 15px;
+        transform: scale(1.5);
+        cursor: pointer;
+    }
+
+    button {
+        font-family: Poppins;
+        font-weight: bold;
+        font-size: 13px;
+        display: block;
+        margin: 10px auto 0;
+        padding: 10px;
+        background-color: white;
+        color: #274A8C;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        text-transform: uppercase;
+    }
+
+    button:hover {
+        background-color: #e2e2e2;
+    }
+
+    #success-message,
+    #error-message {
+        display: none;
+        text-align: center;
+        color: #FFF;
+        font-family: Poppins, sans-serif;
+        padding: 30px 0;
+    }
+
+    #success-message h2 {
+        color: #FFF;
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    #error-message h2 {
+        color: #FF3E4A;
+        font-size: 26px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    .msg-bold {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-bottom: 20px;
+    }
+
+    .msg-regular {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.4;
+        margin-bottom: 0;
+    }
+
+    .plain-email {
+        color: inherit;
+        /* Ссылка берет цвет у родительского элемента (например, от абзаца вокруг нее) */
+        text-decoration: none;
+        /* Убирает стандартное подчеркивание */
+    }
+
+    /* Жестко отключаем любые эффекты при наведении, нажатии или после посещения */
+    .plain-email:hover,
+    .plain-email:active,
+    .plain-email:visited {
+        color: inherit;
+        text-decoration: none;
+    }
+}
+
+/* ── Form loader ── */
+#form-loader {
+    display: flex;
+    justify-content: center;
+    margin: 10px auto 0;
+}
+
+.loader-spinner {
+    width: 26px;
+    height: 26px;
+    border: 3px solid rgba(255, 255, 255, 0.25);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: mxr-spin 0.75s linear infinite;
+}
+
+@keyframes mxr-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Referral Widget — scoped to #mexem-referral-widget
+   No global selectors — safe for embedding in any page.
+───────────────────────────────────────────────────────────── */
+
+#mexem-referral-widget {
+    font-family: inherit;
+    background: transparent;
+    color: #1a1a2e;
+}
+
+#mexem-referral-widget *,
+#mexem-referral-widget *::before,
+#mexem-referral-widget *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#mexem-referral-widget .mxr-header {
+    background: #204489;
+    padding: 20px 24px;
+    text-align: center;
+}
+
+#mexem-referral-widget .mxr-wordmark {
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+#mexem-referral-widget .mxr-card {
+    max-width: 640px;
+    border-radius: 12px;
+    box-shadow: 0 2px 24px rgba(37, 44, 97, 0.14);
+    overflow: hidden;
+}
+
+#mexem-referral-widget .mxr-hero {
+    background: #204489;
+    padding: 36px 32px 28px;
+    text-align: center;
+}
+
+#mexem-referral-widget .mxr-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+}
+
+#mexem-referral-widget .mxr-hero-title {
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.25;
+    margin-bottom: 10px;
+}
+
+#mexem-referral-widget .mxr-hero-title span {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+#mexem-referral-widget .mxr-hero-sub {
+    font-family: inherit;
+    font-size: 15px;
+    color: rgba(255, 255, 255, 0.70);
+}
+
+#mexem-referral-widget .mxr-greeting {
+    font-family: inherit;
+    font-size: 16px;
+    color: #1a1a2e;
+    margin-bottom: 14px;
+}
+
+#mexem-referral-widget .mxr-greeting strong {
+    color: #204489;
+}
+
+#mexem-referral-widget .mxr-intro {
+    font-family: inherit;
+    font-size: 15px;
+    color: #4b5563;
+    line-height: 1.65;
+    margin-bottom: 28px;
+}
+
+#mexem-referral-widget .mxr-section-title {
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+    color: #204489;
+    margin-bottom: 18px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid rgba(32, 68, 137, 0.20);
+}
+
+#mexem-referral-widget .mxr-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+#mexem-referral-widget .mxr-step {
+    background: #f8f9fc;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 18px 16px;
+}
+
+#mexem-referral-widget .mxr-step.accent {
+    background: #eef3fb;
+    border-color: #c5d5ef;
+}
+
+#mexem-referral-widget .mxr-step-num {
+    width: 28px;
+    height: 28px;
+    background: #204489;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#mexem-referral-widget .mxr-step-title {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    color: #204489;
+    margin-bottom: 6px;
+}
+
+#mexem-referral-widget .mxr-step-desc {
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    color: #4b5563;
+    line-height: 1.55;
+}
+
+#mexem-referral-widget .mxr-link-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    background: rgba(32, 68, 137, 0.08);
+    border: 1px solid rgba(32, 68, 137, 0.18);
+    border-radius: 6px;
+    padding: 7px 10px;
+    cursor: pointer;
+}
+
+#mexem-referral-widget .mxr-link-row:hover {
+    background: rgba(32, 68, 137, 0.14);
+}
+
+#mexem-referral-widget .mxr-link-text {
+    flex: 1;
+    min-width: 0;
+}
+
+#mexem-referral-widget .mxr-link-label {
+    display: block;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #204489;
+    margin-bottom: 2px;
+}
+
+#mexem-referral-widget .mxr-link-url {
+    display: block;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 500;
+    color: #204489;
+    word-break: break-all;
+    line-height: 1.4;
+}
+
+#mexem-referral-widget .mxr-copy-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #204489;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    opacity: 0.65;
+}
+
+#mexem-referral-widget .mxr-copy-icon-btn:hover {
+    opacity: 1;
+}
+
+#mexem-referral-widget .mxr-step-link {
+    display: inline-block;
+    margin-top: 8px;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    color: #204489;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+#mexem-referral-widget a.mxr-step-link:hover {
+    text-decoration: underline;
+}
+
+#mexem-referral-widget .mxr-pill {
+    display: inline-block;
+    background: #204489;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 5px;
+}
+
+#mexem-referral-widget .mxr-pill.gold {
+    background: #efffef;
+    color: #1a6b3c;
+    border: 1px solid #b2dfc2;
+}
+
+#mexem-referral-widget .mxr-signoff {
+    font-family: inherit;
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.75;
+    margin-bottom: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+#mexem-referral-widget .mxr-btn-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+#mexem-referral-widget .mxr-btn {
+    flex: 1;
+    min-width: 140px;
+    display: inline-block;
+    padding: 13px 20px;
+    border-radius: 14px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    line-height: 1.4;
+}
+
+#mexem-referral-widget .mxr-btn:hover {
+    opacity: 0.88;
+}
+
+#mexem-referral-widget .mxr-btn-primary {
+    margin-top: 0px;
+    background: #ffffff;
+    color: #204489;
+}
+
+#mexem-referral-widget .mxr-btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+}
+
+#mexem-referral-widget .mxr-footer {
+    background: #152d5c;
+    padding: 18px 20px;
+    text-align: center;
+    font-family: inherit;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+@media (max-width: 500px) {
+    #mexem-referral-widget .mxr-body {
+        padding: 24px 20px 20px;
+    }
+
+    #mexem-referral-widget .mxr-hero {
+        padding: 28px 20px 22px;
+    }
+
+    #mexem-referral-widget .mxr-hero-title {
+        font-size: 22px;
+    }
+}

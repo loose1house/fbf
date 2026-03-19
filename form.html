@@ -1,0 +1,113 @@
+<form id="referralForm">
+    <div class="inputs-block">
+        <div class="form-group">
+            <input type="email" name="email" placeholder="Email" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="ib_account_id" placeholder="Account Number (for example U1234567)" required>
+        </div>
+    </div>
+
+    <div class="checkbox-container">
+        <input id="terms1" type="checkbox" class="terms-check" required>
+        <label for="terms1">By clicking here, you consent to receive communications from MEXEM LTD regarding services,
+            updates, and benefits via telephone and email, in accordance with the Privacy Policy. You may withdraw your
+            consent at any time.
+            You also confirm that you have read, understood, and agree to the <a
+                href="https://cdn.prod.website-files.com/63ec8b41f3741ad110b1ef3d/69451414573ec63d84f48bc5_MEXEM_PRIVACY%20POLICY%20(UPDATED)_DECEMBER%202025%20(1).pdf"
+                target="_blank">Privacy Policy</a> and <a href="https://www.mexem.com/terms-conditions"
+                target="_blank">Terms of Use.</a></label>
+    </div>
+
+    <div class="checkbox-container">
+        <input id="terms2" type="checkbox" class="terms-check" required>
+        <label for="terms2">I agree to the <a
+                href="https://cdn.prod.website-files.com/63ec8b41f3741ad110b1ef3d/663dc6801a650aa68389465c_MEXEM%20PROMOTION%20Refer%20a%20Friend%20Terms%20and%20Conditions%20-%2010_05_2024.pdf"
+                target="_blank">Terms of Use.</a> of the Friend-Bring-Friend benefit.</label>
+    </div>
+
+    <button type="submit" id="submit-btn">Refer a Friend</button>
+
+    <div id="form-loader" style="display:none">
+        <div class="loader-spinner"></div>
+    </div>
+</form>
+
+<div id="success-message">
+    <h2>WELL DONE!</h2>
+    <p class="msg-bold">
+        Your referral link has been sent to your
+        <br>
+        email address.
+    </p>
+    <p class="msg-regular"> If you have not received it, please contact<br>
+        <a href="mailto:support@mexem.com?subject=Friend Bring Friend page" class="plain-email"> support@mexem.com</a>
+    </p>
+</div>
+
+<div id="error-message">
+    <h2>OUPS!</h2>
+    <p class="msg-bold">You have reached the daily request limit.
+        <br>Please try again in 24 hours.
+    </p>
+    <p class="msg-regular">For further assistance, please contact our<br> support team:
+        <a href="mailto:support@mexem.com?subject=Friend Bring Friend page" class="plain-email"> support@mexem.com</a>
+    </p>
+</div>
+
+<!-- ═══════════════════════════════════════
+         Referral widget — rendered on success
+         when API returns msg: "account has been found."
+    ═══════════════════════════════════════ -->
+<div id="mexem-referral-widget" style="display:none">
+    <div class="mxr-card">
+        <div class="mxr-body">
+            <div class="mxr-steps">
+
+                <div class="mxr-step accent">
+                    <div class="mxr-step-num">1</div>
+                    <div class="mxr-step-title" data-i18n="step1Title"></div>
+                    <div class="mxr-step-desc" data-i18n="step1Desc"></div>
+                    <div class="mxr-link-row" id="mxr-copy-row">
+                        <div class="mxr-link-text">
+                            <span class="mxr-link-label" data-i18n="linkLabel"></span>
+                            <span class="mxr-link-url" id="mxr-portal-url-display"></span>
+                        </div>
+                        <button class="mxr-copy-icon-btn" id="mxr-copy-icon" aria-label="Copy link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mxr-step">
+                    <div class="mxr-step-num">2</div>
+                    <div class="mxr-step-title" data-i18n="step2Title"></div>
+                    <div class="mxr-step-desc" data-i18n="step2Desc"></div>
+                </div>
+
+                <div class="mxr-step">
+                    <div class="mxr-step-num">3</div>
+                    <div class="mxr-step-title" data-i18n="step3Title"></div>
+                    <div class="mxr-step-desc" data-i18n="step3Desc"></div>
+                </div>
+
+                <div class="mxr-step accent">
+                    <div class="mxr-step-num">4</div>
+                    <div class="mxr-step-title" data-i18n="step4Title"></div>
+                    <div class="mxr-step-desc" data-i18n="step4Desc"></div>
+                    <a class="mxr-step-link" id="mxr-status-url-display" href="#"></a>
+                </div>
+
+            </div><!-- /.mxr-steps -->
+
+            <div class="mxr-btn-group">
+                <button class="mxr-btn mxr-btn-primary" id="mxr-copy-btn" data-i18n="btnShare"></button>
+                <a class="mxr-btn mxr-btn-secondary" id="mxr-track-btn" data-i18n="btnTrack" href="#" target="_blank"></a>
+            </div>
+
+        </div><!-- /.mxr-body -->
+    </div><!-- /.mxr-card -->
+</div><!-- /#mexem-referral-widget -->
